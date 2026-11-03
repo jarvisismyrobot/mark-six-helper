@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>六合彩建議</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2f6f5e">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="六合彩建議">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -143,6 +151,7 @@
   </details>
 
   <footer>
+    <p>📲 用瀏覽器「加到主畫面」，即可當 App 用（離線都開到）</p>
     <p>⚠️ 每注中獎機率完全相同；六合彩整體期望值為負，只用閒錢投注。</p>
     <p>🔞 18 歲以下不得投注 · 沉迷賭博可致電 1834 633 求助</p>
   </footer>
@@ -268,6 +277,13 @@ function quickPick() {
 }
 
 generate(); // 初始示意一注
+
+// PWA: register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
